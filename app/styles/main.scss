@@ -17,7 +17,7 @@ body {
 }
 
 .overlay {
-  background: url('../images/black-pattern.png') repeat;
+    background: rgba(0,0,0,0.5);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -26,9 +26,13 @@ body {
     z-index: -1;
 }
 
-h1, h2, h3 ,h4 p {
+h1, h2, h3 ,h4, p, a {
   color: white;
   font-family: sans-serif;
+}
+
+a:hover {
+  color: inherit;
 }
 
 h1 {
@@ -50,6 +54,14 @@ main {
   height: 100%;
   width: 100%;
   position: absolute;
+  a {
+    transition: 0.15s ease-in;
+    &:hover {
+      border-bottom: 2px solid black;
+      text-decoration: none;
+    }
+  }
+
 }
 
 main .row {
@@ -58,7 +70,7 @@ main .row {
   padding: 2rem;
 }
 
-#Nav-menu:before {
+.Nav-menu:before {
     position: absolute;
     z-index: -1;
     top: 0;
@@ -73,14 +85,36 @@ main .row {
     transform-origin: 0 0;
     border: none;
     outline: none;
-    background-image: -webkit-linear-gradient(bottom, #76FF03 50%, #B2FF59 100%);
-    background-image: linear-gradient(0deg, #76FF03 50%, #B2FF59 100%);
     box-shadow: none;
+
+    background: linear-gradient(270deg, #b2ff59, #76ff03, #eeff41, #ccff90, #f4ff81, #c6ff00);
+    background-size: 1200% 1200%;
+
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName { 
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+
 }
 
-#Nav-menu .fa {color:black;}
+.Nav-menu .fa {color:black;}
 
-#Nav-menu {
+.Nav-menu {
     position: fixed;
     z-index: 200;
     top: 0;
@@ -99,7 +133,7 @@ main .row {
     box-shadow: none;
 }
 
-#Nav-menu img {
+.Nav-menu img {
   height: 25px;
   width: auto;
 }
@@ -107,6 +141,7 @@ main .row {
 main {
   height: 100%;
   width: 100%;
+
 }
 
 .social {
@@ -120,11 +155,36 @@ main {
 }
 .social li a {
   color: white;
+  transition: 0.15s ease-in;
 }
 
 .social li a:hover {
-  opacity:0.8;
+  border-bottom: 2px solid black;
 }
+
+table {
+  text-align: center;
+  margin: 1rem auto;
+}
+
+td {
+  padding: 0 10px;
+}
+
+.small {
+  font-size: 0.75em;
+}
+
+#mobile-content {
+  display: none;
+  background:transparent;
+  height: 100%;
+}
+
+.mobile {
+  display: none;
+}
+
 
 @media screen and (min-width: 768px) {
   #gradient {
@@ -134,6 +194,29 @@ main {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   margin: 0 auto 40px;
+    background: linear-gradient(270deg, #b2ff59, #76ff03, #eeff41, #ccff90, #f4ff81, #c6ff00);
+    background-size: 1200% 1200%;
+
+    -webkit-animation: AnimationName 350s ease infinite;
+    -moz-animation: AnimationName 50s ease infinite;
+    animation: AnimationName 50s ease infinite;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName { 
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+
   }
   h1, h2, h3, h4, .fa, a, p {
     color: black;
@@ -154,17 +237,41 @@ main {
 }
 
 @media screen and (max-width:768px) {
+  .mobile {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
+
+  #gradient {
+    display: none;
+  }
+  #mobile-content {
+    display: block;
+  }
   main.row {
       margin-right: 0;
       margin-left: 0;
+      background: transparent !important;
+      a:hover {
+            border-bottom: 2px solid white;
+      }
   }
 
-  #Nav-menu {
+  .Nav-menu {
     right: 1rem;
+  }
+
+  .social li a:hover {
+    border-bottom: 2px solid white;
   }
 }
 
 @media screen and (max-width: 40em) {
+  body {
+     background: url('../images/bg-mobile.gif');
+  }
   main {
     background: rgba(0,0,0,0.65);
   }
@@ -179,7 +286,7 @@ main {
   background: transparent;
   }
 
-  #Nav-menu {
+  .Nav-menu {
     right: 1rem;
   }
 }
